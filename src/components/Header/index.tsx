@@ -5,22 +5,23 @@ import { MdShoppingBasket } from 'react-icons/md';
 import logo from '../../assets/images/logo.svg';
 import { Container, Cart } from './styles';
 import { useCart } from '../../hooks/useCart';
+import { constants } from '../../util/constants';
 
 const Header = (): JSX.Element => {
-  // const { cart } = useCart();
-  // const cartSize = // TODO;
+  const { cart } = useCart();
+  const cartSize = cart.length;
 
   return (
     <Container>
       <Link to="/">
-        <img src={logo} alt="Rocketshoes" />
+        <img src={logo} alt={constants.textContent.rocketShoes} />
       </Link>
 
       <Cart to="/cart">
         <div>
-          <strong>Meu carrinho</strong>
+          <strong>{constants.textContent.myCart}</strong>
           <span data-testid="cart-size">
-            {/* {cartSize === 1 ? `${cartSize} item` : `${cartSize} itens`} */}
+            {constants.textContent.cartSize(cartSize)}
           </span>
         </div>
         <MdShoppingBasket size={36} color="#FFF" />
